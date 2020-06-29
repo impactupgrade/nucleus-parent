@@ -106,7 +106,7 @@
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>salesforce-java-tools</artifactId>
-      <version>0.0.1.Final</version>
+      <version>0.0.2.Final</version>
     </dependency>
     <dependency>
       <groupId>com.stripe</groupId>
@@ -122,12 +122,12 @@
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>paymentspring-java-client</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <version>1.0.1.Final</version>
     </dependency>
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>hubspot-java-client</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <version>1.0.0.Final</version>
     </dependency>
     <dependency>
       <groupId>com.twilio.sdk</groupId>
