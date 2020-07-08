@@ -10,10 +10,10 @@
   <packaging>pom</packaging>
 
   <properties>
-    <version.cxf>3.3.5</version.cxf>
+    <version.cxf>3.3.7</version.cxf>
     <version.guava>29.0-jre</version.guava>
     <version.jersey>2.30</version.jersey>
-    <version.jetty>9.4.26.v20200117</version.jetty>
+    <version.jetty>9.4.30.v20200611</version.jetty>
     <version.log4j>2.13.0</version.log4j>
     <version.mail>1.6.2</version.mail>
     <version.spring>4.1.0.RELEASE</version.spring>
@@ -196,19 +196,6 @@
       <artifactId>log4j-slf4j-impl</artifactId>
       <version>${version.log4j}</version>
       <scope>runtime</scope>
-    </dependency>
-    
-    <!-- Java 11 -->
-    <dependency>
-      <groupId>com.sun.xml.bind</groupId>
-      <artifactId>jaxb-impl</artifactId>
-      <version>2.3.3</version>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.xml.ws</groupId>
-      <artifactId>jaxws-ri</artifactId>
-      <version>2.3.3</version>
-      <type>pom</type>
     </dependency>
   </dependencies>
 
