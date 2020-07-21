@@ -17,7 +17,7 @@
     <version.log4j>2.13.0</version.log4j>
     <version.mail>1.6.2</version.mail>
     <version.spring>4.1.0.RELEASE</version.spring>
-    <version.stripe>18.8.0</version.stripe>
+    <version.stripe>18.16.0</version.stripe>
     <version.twilio>7.42.0</version.twilio>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
