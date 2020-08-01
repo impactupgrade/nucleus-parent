@@ -261,6 +261,23 @@
     </repository>
   </repositories>
 
+  <!--
+      Using https://gitlab.com/impact-upgrade/maven-repo as a private repo. Assumes you have the following in your ~/.m2/settings.xml:
+
+      <server>
+        <id>gitlab-maven</id>
+        <configuration>
+          <httpHeaders>
+            <property>
+              <name>Private-Token</name>
+              <value>YOUR TOKEN</value>
+            </property>
+          </httpHeaders>
+        </configuration>
+      </server>
+
+      Create your own token following https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#creating-a-personal-access-token
+  -->
   <distributionManagement>
     <repository>
       <id>gitlab-maven</id>
