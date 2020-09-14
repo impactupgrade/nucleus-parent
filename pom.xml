@@ -6,7 +6,7 @@
 
   <groupId>com.impactupgrade</groupId>
   <artifactId>hub-parent</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <version>1.0.4.Final</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -126,7 +126,7 @@
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>paymentspring-java-client</artifactId>
-      <version>1.0.3.Final</version>
+      <version>1.0.4.Final</version>
     </dependency>
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
