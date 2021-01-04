@@ -6,7 +6,7 @@
 
   <groupId>com.impactupgrade</groupId>
   <artifactId>hub-parent</artifactId>
-  <version>1.0.6-SNAPSHOT</version>
+  <version>1.0.6.Final</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -17,7 +17,7 @@
     <version.log4j>2.13.0</version.log4j>
     <version.mail>1.6.2</version.mail>
     <version.spring>4.1.0.RELEASE</version.spring>
-    <version.stripe>18.16.0</version.stripe>
+    <version.stripe>20.20.0</version.stripe>
     <version.twilio>7.42.0</version.twilio>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +25,7 @@
   </properties>
 
   <dependencies>
-    <!-- JAXWS for Java 11 -->
+    <!-- JAXWS for Java 11+ -->
     <dependency>
       <groupId>com.sun.xml.ws</groupId>
       <artifactId>jaxws-rt</artifactId>
@@ -105,7 +105,7 @@
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>salesforce-java-tools</artifactId>
-      <version>0.2.3.Final</version>
+      <version>0.2.6.Final</version>
     </dependency>
     <dependency>
       <groupId>com.force.api</groupId>
@@ -126,12 +126,12 @@
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>paymentspring-java-client</artifactId>
-      <version>1.0.4.Final</version>
+      <version>1.0.5.Final</version>
     </dependency>
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>hubspot-java-client</artifactId>
-      <version>1.0.0.Final</version>
+      <version>1.0.5.Final</version>
     </dependency>
     <dependency>
       <groupId>com.twilio.sdk</groupId>
@@ -156,6 +156,11 @@
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-csv</artifactId>
+      <version>1.8</version>
     </dependency>
     <!-- country code <-> country name conversions -->
     <dependency>
@@ -219,8 +224,9 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <source>11</source>
-          <target>11</target>
+          <source>15</source>
+          <target>15</target>
+          <compilerArgs>--enable-preview</compilerArgs>
         </configuration>
       </plugin>
       <plugin>
@@ -248,20 +254,6 @@
     </plugins>
   </build>
 
-  <repositories>
-    <!-- allow sonatype snapshots, primarily for open source SDKs from Impact Upgrade -->
-    <repository>
-      <id>oss.sonatype.org-snapshot</id>
-      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-
   <!--
       Using https://gitlab.com/impact-upgrade/maven-repo as a private repo. Assumes you have the following in your ~/.m2/settings.xml:
 
@@ -279,6 +271,23 @@
 
       Create your own token following https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#creating-a-personal-access-token
   -->
+  <repositories>
+    <!-- allow sonatype snapshots, primarily for open source SDKs from Impact Upgrade -->
+    <repository>
+      <id>oss.sonatype.org-snapshot</id>
+      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>gitlab-maven</id>
+      <url>https://gitlab.com/api/v4/projects/20274353/packages/maven</url>
+    </repository>
+  </repositories>
   <distributionManagement>
     <repository>
       <id>gitlab-maven</id>
