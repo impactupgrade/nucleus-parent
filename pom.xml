@@ -6,7 +6,7 @@
 
   <groupId>com.impactupgrade</groupId>
   <artifactId>hub-parent</artifactId>
-  <version>1.0.7-SNAPSHOT</version>
+  <version>1.0.7.Final</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -105,7 +105,7 @@
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>salesforce-java-tools</artifactId>
-      <version>0.2.6.Final</version>
+      <version>0.2.7.Final</version>
     </dependency>
     <dependency>
       <groupId>com.force.api</groupId>
