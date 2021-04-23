@@ -12,8 +12,8 @@
   <properties>
     <version.cxf>3.3.7</version.cxf>
     <version.guava>29.0-jre</version.guava>
-    <version.jersey>2.30</version.jersey>
-    <version.jetty>9.4.30.v20200611</version.jetty>
+    <version.jersey>3.0.1</version.jersey>
+    <version.jetty>11.0.2</version.jetty>
     <version.log4j>2.13.0</version.log4j>
     <version.mail>1.6.2</version.mail>
     <version.spring>4.1.0.RELEASE</version.spring>
@@ -142,6 +142,12 @@
       <groupId>com.twilio.sdk</groupId>
       <artifactId>twilio</artifactId>
       <version>${version.twilio}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <!-- email -->
@@ -178,7 +184,7 @@
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-csv</artifactId>
       <!-- Keep this in sync with the Jackson version in jersey-media-json-jackson -->
-      <version>2.9.9</version>
+      <version>2.11.3</version>
     </dependency>
 
     <!-- jruby (making use of a ruby script for SFDC exports -->
