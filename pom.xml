@@ -10,15 +10,16 @@
   <packaging>pom</packaging>
 
   <properties>
-    <version.cxf>3.3.7</version.cxf>
-    <version.guava>29.0-jre</version.guava>
-    <version.jersey>3.0.1</version.jersey>
-    <version.jetty>11.0.2</version.jetty>
-    <version.log4j>2.13.0</version.log4j>
+    <version.cxf>3.3.10</version.cxf>
+    <version.guava>30.1.1-jre</version.guava>
+    <!-- TODO: Would love to upgrade Jersey/Jetty and start using Jakarta APIs, but CXF (even 3.4) doesn't support it (entirely) yet... -->
+    <version.jersey>2.34</version.jersey>
+    <version.jetty>9.4.40.v20210413</version.jetty>
+    <version.log4j>2.14.1</version.log4j>
     <version.mail>1.6.2</version.mail>
     <version.spring>4.1.0.RELEASE</version.spring>
-    <version.stripe>20.20.0</version.stripe>
-    <version.twilio>7.42.0</version.twilio>
+    <version.stripe>20.47.1</version.stripe>
+    <version.twilio>8.11.0</version.twilio>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -96,7 +97,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-transports-http</artifactId>
+      <artifactId>cxf-rt-transports-http-jetty</artifactId>
       <version>${version.cxf}</version>
     </dependency>
     <!-- used by CXF -->
@@ -104,6 +105,18 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>${version.spring}</version>
+    </dependency>
+
+    <!-- DB access, currently limited to Donation Spring -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.4.30.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.19</version>
     </dependency>
 
     <!-- 3rd party SDKs -->
@@ -136,7 +149,7 @@
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>hubspot-java-client</artifactId>
-      <version>1.0.5.Final</version>
+      <version>1.0.6.Final</version>
     </dependency>
     <dependency>
       <groupId>com.twilio.sdk</groupId>
@@ -173,18 +186,28 @@
       <artifactId>commons-csv</artifactId>
       <version>1.8</version>
     </dependency>
+    <dependency>
+      <groupId>commons-validator</groupId>
+      <artifactId>commons-validator</artifactId>
+      <version>1.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20201115</version>
+    </dependency>
     <!-- country code <-> country name conversions -->
     <dependency>
       <groupId>com.neovisionaries</groupId>
       <artifactId>nv-i18n</artifactId>
-      <version>1.27</version>
+      <version>1.28</version>
     </dependency>
     <!-- csv lib -->
     <dependency>
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-csv</artifactId>
       <!-- Keep this in sync with the Jackson version in jersey-media-json-jackson -->
-      <version>2.11.3</version>
+      <version>2.12.2</version>
     </dependency>
 
     <!-- jruby (making use of a ruby script for SFDC exports -->
