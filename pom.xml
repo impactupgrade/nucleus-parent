@@ -6,7 +6,7 @@
 
   <groupId>com.impactupgrade</groupId>
   <artifactId>hub-parent</artifactId>
-  <version>1.0.9-SNAPSHOT</version>
+  <version>1.0.9.Final</version>
   <packaging>pom</packaging>
 
   <properties>
