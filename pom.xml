@@ -32,6 +32,13 @@
       <artifactId>jaxws-rt</artifactId>
       <version>3.0.0</version>
       <type>pom</type>
+      <exclusions>
+        <!-- Conflicts with what we're already using -->
+        <exclusion>
+          <groupId>com.sun.mail</groupId>
+          <artifactId>jakarta.mail</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.sun.xml.ws</groupId>
