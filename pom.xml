@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.impactupgrade</groupId>
-  <artifactId>hub-parent</artifactId>
-  <version>1.0.12.Final</version>
+  <artifactId>nucleus-parent</artifactId>
+  <version>1.0.13-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
