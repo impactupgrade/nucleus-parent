@@ -176,7 +176,7 @@
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>paymentspring-java-client</artifactId>
-      <version>1.0.6.Final</version>
+      <version>1.0.7.Final</version>
     </dependency>
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
@@ -301,7 +301,7 @@
     </dependency>
     <dependency>
       <groupId>org.glassfish.jersey.test-framework.providers</groupId>
-      <artifactId>jersey-test-framework-provider-jetty</artifactId>
+      <artifactId>jersey-test-framework-provider-external</artifactId>
       <version>2.34</version>
       <scope>test</scope>
     </dependency>
