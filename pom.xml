@@ -10,7 +10,7 @@
 
   <groupId>com.impactupgrade</groupId>
   <artifactId>nucleus-parent</artifactId>
-  <version>1.0.14-SNAPSHOT</version>
+  <version>1.0.14.Final</version>
   <packaging>pom</packaging>
 
   <name>Nonprofit Nucleus: Parent</name>
