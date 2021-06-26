@@ -10,7 +10,7 @@
 
   <groupId>com.impactupgrade</groupId>
   <artifactId>nucleus-parent</artifactId>
-  <version>1.0.18-SNAPSHOT</version>
+  <version>1.0.18.Final</version>
   <packaging>pom</packaging>
 
   <name>Nonprofit Nucleus: Parent</name>
@@ -188,7 +188,7 @@
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>paymentspring-java-client</artifactId>
-      <version>1.0.7.Final</version>
+      <version>1.0.8.Final</version>
     </dependency>
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
