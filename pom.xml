@@ -10,7 +10,7 @@
 
   <groupId>com.impactupgrade</groupId>
   <artifactId>nucleus-parent</artifactId>
-  <version>1.0.19-SNAPSHOT</version>
+  <version>1.0.19.Final</version>
   <packaging>pom</packaging>
 
   <name>Nonprofit Nucleus: Parent</name>
@@ -347,6 +347,15 @@
         <version>3.1.0</version>
         <configuration>
           <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <release>15</release>
+          <additionalOptions>--enable-preview</additionalOptions>
         </configuration>
       </plugin>
 
