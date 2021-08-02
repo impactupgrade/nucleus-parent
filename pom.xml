@@ -8,6 +8,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.5.3</version>
+  </parent>
+
   <groupId>com.impactupgrade</groupId>
   <artifactId>nucleus-parent</artifactId>
   <version>2.0.0-SNAPSHOT</version>
@@ -33,14 +39,16 @@
   </developers>
 
   <properties>
-    <version.cxf>3.3.10</version.cxf>
+    <java.version>16</java.version>
+
+<!--    <version.cxf>3.3.10</version.cxf>-->
     <version.guava>30.1.1-jre</version.guava>
     <!-- TODO: Would love to upgrade Jersey/Jetty and start using Jakarta APIs, but CXF (even 3.4) doesn't support it (entirely) yet... -->
-    <version.jersey>2.34</version.jersey>
-    <version.jetty>9.4.40.v20210413</version.jetty>
-    <version.log4j>2.14.1</version.log4j>
-    <version.mail>1.6.2</version.mail>
-    <version.spring>4.1.0.RELEASE</version.spring>
+<!--    <version.jersey>2.34</version.jersey>-->
+<!--    <version.jetty>9.4.40.v20210413</version.jetty>-->
+<!--    <version.log4j>2.14.1</version.log4j>-->
+<!--    <version.mail>1.6.2</version.mail>-->
+<!--    <version.spring>4.1.0.RELEASE</version.spring>-->
     <version.stripe>20.66.0</version.stripe>
     <version.twilio>8.17.0</version.twilio>
 
@@ -49,112 +57,155 @@
   </properties>
 
   <dependencies>
-    <!-- JAXWS for Java 11+ -->
     <dependency>
-      <groupId>com.sun.xml.ws</groupId>
-      <artifactId>jaxws-rt</artifactId>
-      <version>3.0.1</version>
-      <type>pom</type>
-      <exclusions>
-        <!-- Conflicts with what we're already using -->
-        <exclusion>
-          <groupId>com.sun.mail</groupId>
-          <artifactId>jakarta.mail</artifactId>
-        </exclusion>
-      </exclusions>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.sun.xml.ws</groupId>
-      <artifactId>rt</artifactId>
-      <version>3.0.1</version>
-      <exclusions>
-        <!-- Conflicts with what we're already using -->
-        <exclusion>
-          <groupId>com.sun.mail</groupId>
-          <artifactId>jakarta.mail</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-    <!-- Jetty provides the underlying, embedded web server. -->
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-server</artifactId>
-      <version>${version.jetty}</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-amqp</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-servlet</artifactId>
-      <version>${version.jetty}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-servlets</artifactId>
-      <version>${version.jetty}</version>
-    </dependency>
-
-    <!-- Jersey provides the API/REST server bits -->
-    <dependency>
-      <groupId>org.glassfish.jersey.core</groupId>
-      <artifactId>jersey-server</artifactId>
-      <version>${version.jersey}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.jersey.containers</groupId>
-      <artifactId>jersey-container-servlet-core</artifactId>
-      <version>${version.jersey}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.jersey.media</groupId>
-      <artifactId>jersey-media-json-jackson</artifactId>
-      <version>${version.jersey}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.jersey.media</groupId>
-      <artifactId>jersey-media-multipart</artifactId>
-      <version>${version.jersey}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.jersey.inject</groupId>
-      <artifactId>jersey-hk2</artifactId>
-      <version>${version.jersey}</version>
-    </dependency>
-    <!-- Also using Jersey as the HTTP client. -->
-    <dependency>
-      <groupId>org.glassfish.jersey.core</groupId>
-      <artifactId>jersey-client</artifactId>
-      <version>${version.jersey}</version>
-    </dependency>
-
-    <!-- Using CXF to handle the SOAP server bits -->
-    <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-frontend-jaxws</artifactId>
-      <version>${version.cxf}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-transports-http-jetty</artifactId>
-      <version>${version.cxf}</version>
-    </dependency>
-    <!-- used by CXF -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-      <version>${version.spring}</version>
-    </dependency>
-
-    <!-- DB access, currently limited to Donation Spring -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>5.5.4.Final</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
-      <version>42.2.23.jre7</version>
+      <scope>runtime</scope>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jersey</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-mail</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web-services</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+<!--    &lt;!&ndash; JAXWS for Java 11+ &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>com.sun.xml.ws</groupId>-->
+<!--      <artifactId>jaxws-rt</artifactId>-->
+<!--      <version>3.0.1</version>-->
+<!--      <type>pom</type>-->
+<!--      <exclusions>-->
+<!--        &lt;!&ndash; Conflicts with what we're already using &ndash;&gt;-->
+<!--        <exclusion>-->
+<!--          <groupId>com.sun.mail</groupId>-->
+<!--          <artifactId>jakarta.mail</artifactId>-->
+<!--        </exclusion>-->
+<!--      </exclusions>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>com.sun.xml.ws</groupId>-->
+<!--      <artifactId>rt</artifactId>-->
+<!--      <version>3.0.1</version>-->
+<!--      <exclusions>-->
+<!--        &lt;!&ndash; Conflicts with what we're already using &ndash;&gt;-->
+<!--        <exclusion>-->
+<!--          <groupId>com.sun.mail</groupId>-->
+<!--          <artifactId>jakarta.mail</artifactId>-->
+<!--        </exclusion>-->
+<!--      </exclusions>-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash; Jetty provides the underlying, embedded web server. &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.eclipse.jetty</groupId>-->
+<!--      <artifactId>jetty-server</artifactId>-->
+<!--      <version>${version.jetty}</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.eclipse.jetty</groupId>-->
+<!--      <artifactId>jetty-servlet</artifactId>-->
+<!--      <version>${version.jetty}</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.eclipse.jetty</groupId>-->
+<!--      <artifactId>jetty-servlets</artifactId>-->
+<!--      <version>${version.jetty}</version>-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash; Jersey provides the API/REST server bits &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.glassfish.jersey.core</groupId>-->
+<!--      <artifactId>jersey-server</artifactId>-->
+<!--      <version>${version.jersey}</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.glassfish.jersey.containers</groupId>-->
+<!--      <artifactId>jersey-container-servlet-core</artifactId>-->
+<!--      <version>${version.jersey}</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.glassfish.jersey.media</groupId>-->
+<!--      <artifactId>jersey-media-json-jackson</artifactId>-->
+<!--      <version>${version.jersey}</version>-->
+<!--    </dependency>-->
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-multipart</artifactId>
+      <version>${jersey.version}</version>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.glassfish.jersey.inject</groupId>-->
+<!--      <artifactId>jersey-hk2</artifactId>-->
+<!--      <version>${version.jersey}</version>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; Also using Jersey as the HTTP client. &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.glassfish.jersey.core</groupId>-->
+<!--      <artifactId>jersey-client</artifactId>-->
+<!--      <version>${version.jersey}</version>-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash; Using CXF to handle the SOAP server bits &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.cxf</groupId>-->
+<!--      <artifactId>cxf-rt-frontend-jaxws</artifactId>-->
+<!--      <version>${version.cxf}</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.cxf</groupId>-->
+<!--      <artifactId>cxf-rt-transports-http-jetty</artifactId>-->
+<!--      <version>${version.cxf}</version>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash; used by CXF &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework</groupId>-->
+<!--      <artifactId>spring-context</artifactId>-->
+<!--      <version>${version.spring}</version>-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash; DB access, currently limited to Donation Spring &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.hibernate</groupId>-->
+<!--      <artifactId>hibernate-core</artifactId>-->
+<!--      <version>5.5.4.Final</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.postgresql</groupId>-->
+<!--      <artifactId>postgresql</artifactId>-->
+<!--      <version>42.2.23.jre7</version>-->
+<!--    </dependency>-->
 
     <!-- 3rd party SDKs -->
     <dependency>
@@ -200,12 +251,12 @@
       </exclusions>
     </dependency>
 
-    <!-- email -->
-    <dependency>
-      <groupId>com.sun.mail</groupId>
-      <artifactId>javax.mail</artifactId>
-      <version>${version.mail}</version>
-    </dependency>
+<!--    &lt;!&ndash; email &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>com.sun.mail</groupId>-->
+<!--      <artifactId>javax.mail</artifactId>-->
+<!--      <version>${version.mail}</version>-->
+<!--    </dependency>-->
 
     <!-- misc -->
     <dependency>
@@ -213,21 +264,21 @@
       <artifactId>guava</artifactId>
       <version>${version.guava}</version>
     </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.6</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>commons-io</groupId>-->
+<!--      <artifactId>commons-io</artifactId>-->
+<!--      <version>2.6</version>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-csv</artifactId>
       <version>1.8</version>
     </dependency>
-    <dependency>
-      <groupId>commons-validator</groupId>
-      <artifactId>commons-validator</artifactId>
-      <version>1.7</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>commons-validator</groupId>-->
+<!--      <artifactId>commons-validator</artifactId>-->
+<!--      <version>1.7</version>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
@@ -243,8 +294,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-csv</artifactId>
-      <!-- Keep this in sync with the Jackson version in jersey-media-json-jackson -->
-      <version>2.12.2</version>
+      <version>${jackson-bom.version}</version>
     </dependency>
 
     <!-- jruby (making use of a ruby script for SFDC exports -->
@@ -266,50 +316,50 @@
       <version>5.0.0</version>
     </dependency>
 
-    <!-- logging -->
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>${version.log4j}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>${version.log4j}</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-slf4j-impl</artifactId>
-      <version>${version.log4j}</version>
-      <scope>runtime</scope>
-    </dependency>
+<!--    &lt;!&ndash; logging &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.logging.log4j</groupId>-->
+<!--      <artifactId>log4j-api</artifactId>-->
+<!--      <version>${version.log4j}</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.logging.log4j</groupId>-->
+<!--      <artifactId>log4j-core</artifactId>-->
+<!--      <version>${version.log4j}</version>-->
+<!--      <scope>runtime</scope>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.logging.log4j</groupId>-->
+<!--      <artifactId>log4j-slf4j-impl</artifactId>-->
+<!--      <version>${version.log4j}</version>-->
+<!--      <scope>runtime</scope>-->
+<!--    </dependency>-->
 
-    <!-- testing -->
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.7.2</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-junit-jupiter</artifactId>
-      <version>3.11.2</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.jersey.test-framework</groupId>
-      <artifactId>jersey-test-framework-core</artifactId>
-      <version>2.34</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.jersey.test-framework.providers</groupId>
-      <artifactId>jersey-test-framework-provider-external</artifactId>
-      <version>2.34</version>
-      <scope>test</scope>
-    </dependency>
+<!--    &lt;!&ndash; testing &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.junit.jupiter</groupId>-->
+<!--      <artifactId>junit-jupiter-engine</artifactId>-->
+<!--      <version>5.7.2</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.mockito</groupId>-->
+<!--      <artifactId>mockito-junit-jupiter</artifactId>-->
+<!--      <version>3.11.2</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.glassfish.jersey.test-framework</groupId>-->
+<!--      <artifactId>jersey-test-framework-core</artifactId>-->
+<!--      <version>2.34</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.glassfish.jersey.test-framework.providers</groupId>-->
+<!--      <artifactId>jersey-test-framework-provider-external</artifactId>-->
+<!--      <version>2.34</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
   </dependencies>
 
   <build>
@@ -329,8 +379,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.2</version>
-        <configuration>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -361,6 +409,11 @@
             <goals><goal>copy-dependencies</goal></goals>
           </execution>
         </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
