@@ -50,6 +50,8 @@
     <version.spring>4.1.0.RELEASE</version.spring>
     <version.stripe>20.66.0</version.stripe>
     <version.twilio>8.17.0</version.twilio>
+    <version.xero>4.12.0</version.xero>
+    <version.quickbooks>6.0.7</version.quickbooks>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -178,6 +180,28 @@
       <groupId>com.stripe</groupId>
       <artifactId>stripe-java</artifactId>
       <version>${version.stripe}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.xeroapi</groupId>
+      <artifactId>xero-java</artifactId>
+      <version>${version.xero}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.intuit.quickbooks-online</groupId>
+      <artifactId>ipp-v3-java-data</artifactId>
+      <version>${version.quickbooks}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.intuit.quickbooks-online</groupId>
+      <artifactId>ipp-v3-java-devkit</artifactId>
+      <classifier>jar-with-dependencies</classifier>
+      <version>${version.quickbooks}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.intuit.quickbooks-online</groupId>
+      <artifactId>oauth2-platform-api</artifactId>
+      <classifier>jar-with-dependencies</classifier>
+      <version>${version.quickbooks}</version>
     </dependency>
     <!-- Need GSON to unmarshall Stripe events, but transitive dep is runtime scope :( -->
     <dependency>
