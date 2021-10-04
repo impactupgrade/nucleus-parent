@@ -479,11 +479,6 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
-    <!-- Temporarily keeping GitLab - need it for SFDC artifacts. -->
-    <repository>
-      <id>gitlab-maven</id>
-      <url>https://gitlab.com/api/v4/projects/20274353/packages/maven</url>
-    </repository>
     <!-- allow sonatype snapshots, primarily for open source SDKs from Impact Upgrade -->
     <repository>
       <id>oss.sonatype.org-snapshot</id>
