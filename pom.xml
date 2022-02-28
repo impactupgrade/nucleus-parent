@@ -39,6 +39,7 @@
     <version.cxf>3.3.10</version.cxf>
     <version.gson>2.8.7</version.gson>
     <version.guava>30.1.1-jre</version.guava>
+    <version.h2>2.1.210</version.h2>
     <version.hibernate>5.5.6.Final</version.hibernate>
     <!-- TODO: Would love to upgrade Jersey/Jetty and start using Jakarta APIs, but CXF (even 3.4) doesn't support it (entirely) yet... -->
     <version.jersey>2.34</version.jersey>
@@ -152,7 +153,7 @@
       <version>${version.spring}</version>
     </dependency>
 
-    <!-- DB access, currently limited to Donation Spring -->
+    <!-- DB access -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
@@ -358,6 +359,12 @@
       <groupId>org.glassfish.jersey.test-framework.providers</groupId>
       <artifactId>jersey-test-framework-provider-external</artifactId>
       <version>2.34</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${version.h2}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
