@@ -176,12 +176,12 @@
     <dependency>
       <groupId>com.impactupgrade.integration</groupId>
       <artifactId>salesforce-java-tools</artifactId>
-      <version>0.3.1.Final</version>
+      <version>0.3.2-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.force.api</groupId>
       <artifactId>force-wsc</artifactId>
-      <version>48.1.0</version>
+      <version>55.2.0</version>
     </dependency>
     <dependency>
       <groupId>com.stripe</groupId>
