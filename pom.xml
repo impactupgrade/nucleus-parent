@@ -52,7 +52,7 @@
     <version.sendgrid>4.9.0</version.sendgrid>
     <version.spring>4.1.0.RELEASE</version.spring>
     <version.stripe>20.115.0</version.stripe>
-    <version.twilio>8.17.0</version.twilio>
+    <version.twilio>8.36.0</version.twilio>
     <version.xero>4.12.0</version.xero>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -211,7 +211,15 @@
       <version>${version.twilio}</version>
       <exclusions>
         <exclusion>
-          <groupId>com.fasterxml.jackson.*</groupId>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.dataformat</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.datatype</groupId>
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
