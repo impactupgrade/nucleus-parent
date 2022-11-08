@@ -47,7 +47,7 @@
     <version.jruby>9.2.19.0</version.jruby>
     <version.log4j>2.17.0</version.log4j>
     <version.mail>1.6.2</version.mail>
-    <version.newrelic>7.3.0</version.newrelic>
+    <version.newrelic>7.11.0</version.newrelic>
     <version.postgres>42.2.23</version.postgres>
     <version.sendgrid>4.9.0</version.sendgrid>
     <version.spring>4.1.0.RELEASE</version.spring>
@@ -364,11 +364,6 @@
       <groupId>com.newrelic.agent.java</groupId>
       <artifactId>newrelic-api</artifactId>
       <version>${version.newrelic}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.newrelic.logging</groupId>
-      <artifactId>log4j2</artifactId>
-      <version>2.3</version>
     </dependency>
 
     <!-- testing -->
