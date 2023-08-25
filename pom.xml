@@ -301,6 +301,11 @@
       <artifactId>nv-i18n</artifactId>
       <version>1.28</version>
     </dependency>
+    <dependency>
+      <groupId>com.rollbar</groupId>
+      <artifactId>rollbar-java</artifactId>
+      <version>1.10.0</version>
+    </dependency>
 
     <!-- Jackson, but keep this in sync with the Jackson version in jersey-media-json-jackson -->
     <dependency>
