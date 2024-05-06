@@ -13,12 +13,19 @@
   <version>2.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>Nonprofit Nucleus: Parent</name>
+  <name>Impact Nucleus: Parent</name>
   <description>TODO</description>
-  <url>https://www.impactupgrade.com/nonprofit-nucleus</url>
+  <url>https://impactnucleus.com</url>
   <scm>
     <url>https://github.com/impactupgrade/nucleus-parent</url>
   </scm>
+  <licenses>
+    <license>
+      <name>PolyForm Noncommercial License 1.0.0</name>
+      <url>https://polyformproject.org/licenses/noncommercial/1.0.0/</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   <organization>
     <name>Impact Upgrade</name>
     <url>https://www.impactupgrade.com</url>
@@ -162,6 +169,11 @@
       <version>${version.hibernate}</version>
     </dependency>
     <dependency>
+      <groupId>com.vladmihalcea</groupId>
+      <artifactId>hibernate-types-55</artifactId>
+      <version>2.14.0</version>
+    </dependency>
+    <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-hikaricp</artifactId>
       <version>${version.hibernate}</version>
@@ -240,6 +252,21 @@
       <groupId>com.sendgrid</groupId>
       <artifactId>sendgrid-java</artifactId>
       <version>${version.sendgrid}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.microsoft.graph</groupId>
+      <artifactId>microsoft-graph</artifactId>
+      <version>5.27.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-identity</artifactId>
+      <version>1.2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>com.paypal.sdk</groupId>
+      <artifactId>rest-api-sdk</artifactId>
+      <version>1.14.0</version>
     </dependency>
 
     <!-- email -->
@@ -509,33 +536,71 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <extensions>true</extensions>
+            <configuration>
+              <serverId>ossrh</serverId>
+              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+              <autoReleaseAfterClose>true</autoReleaseAfterClose>
+            </configuration>
+            <dependencies>
+              <!-- TODO: remove after OSSRH-66257 and NEXUS-26993 are fixed -->
+              <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>1.4.15</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 
-  <!--
-    Using https://github.com/impactupgrade/nucleus-parent/packages as a private repo. Assumes you have the following in your ~/.m2/settings.xml:
-
-    <server>
-      <id>github</id>
-      <configuration>
-        <httpHeaders>
-          <property>
-            <name>YOUR USERNAME</name>
-            <value>YOUR TOKEN</value>
-          </property>
-        </httpHeaders>
-      </configuration>
-    </server>
-
-    Create your own token here: https://github.com/settings/tokens/new. Enable the "write:packages" scope.
-  -->
   <repositories>
-    <repository>
-      <id>github</id>
-      <url>https://maven.pkg.github.com/impactupgrade/*</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
     <!-- allow sonatype snapshots, primarily for open source SDKs from Impact Upgrade -->
     <repository>
       <id>oss.sonatype.org-snapshot</id>
@@ -551,12 +616,12 @@
 
   <distributionManagement>
     <snapshotRepository>
-      <id>github</id>
-      <url>https://maven.pkg.github.com/impactupgrade/nucleus-parent</url>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
     <repository>
-      <id>github</id>
-      <url>https://maven.pkg.github.com/impactupgrade/nucleus-parent</url>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
   </distributionManagement>
 </project>
