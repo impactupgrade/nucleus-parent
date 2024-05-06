@@ -1,4 +1,4 @@
-# Nonprofit Nucleus: Parent
+# Impact Nucleus: Parent
 
 This project purely provides the Maven parent POM for all [Impact Nucleus](https://impactnucleus.com/) projects, defining: dependencies, repositories, and distribution. Please see [nucleus-engine](https://github.com/impactupgrade/nucleus-engine) for the primary suite.
 
