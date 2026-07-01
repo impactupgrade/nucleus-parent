@@ -54,7 +54,6 @@
     <version.jruby>9.2.19.0</version.jruby>
     <version.log4j>2.17.0</version.log4j>
     <version.mail>1.6.2</version.mail>
-    <version.newrelic>7.11.0</version.newrelic>
     <version.postgres>42.2.23</version.postgres>
     <version.sendgrid>4.9.0</version.sendgrid>
     <version.spring>4.1.0.RELEASE</version.spring>
@@ -336,7 +335,7 @@
     <dependency>
       <groupId>com.rollbar</groupId>
       <artifactId>rollbar-java</artifactId>
-      <version>1.10.0</version>
+      <version>2.3.0</version>
     </dependency>
 
     <!-- Jackson, but keep this in sync with the Jackson version in jersey-media-json-jackson -->
@@ -387,20 +386,6 @@
       <artifactId>log4j-slf4j-impl</artifactId>
       <version>${version.log4j}</version>
       <scope>runtime</scope>
-    </dependency>
-
-    <!-- New Relic -->
-    <dependency>
-      <groupId>com.newrelic.agent.java</groupId>
-      <artifactId>newrelic-java</artifactId>
-      <version>${version.newrelic}</version>
-      <scope>provided</scope>
-      <type>zip</type>
-    </dependency>
-    <dependency>
-      <groupId>com.newrelic.agent.java</groupId>
-      <artifactId>newrelic-api</artifactId>
-      <version>${version.newrelic}</version>
     </dependency>
 
     <!-- testing -->
@@ -476,23 +461,6 @@
         <artifactId>maven-dependency-plugin</artifactId>
         <version>3.1.1</version>
         <executions>
-          <execution>
-            <id>unpack-newrelic</id>
-            <phase>package</phase>
-            <goals>
-              <goal>unpack-dependencies</goal>
-            </goals>
-            <configuration>
-              <includeGroupIds>com.newrelic.agent.java</includeGroupIds>
-              <includeArtifactIds>newrelic-java</includeArtifactIds>
-              <!-- you can optionally exclude files -->
-              <!-- <excludes>**/newrelic.yml</excludes> -->
-              <overWriteReleases>false</overWriteReleases>
-              <overWriteSnapshots>false</overWriteSnapshots>
-              <overWriteIfNewer>true</overWriteIfNewer>
-              <outputDirectory>${project.build.directory}</outputDirectory>
-            </configuration>
-          </execution>
           <!-- required by Heroku, since the Procfile adds target/dependency/* to the classpath -->
           <execution>
             <id>copy-dependencies</id>
