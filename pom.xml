@@ -328,9 +328,9 @@
     </dependency>
     <!-- country code <-> country name conversions -->
     <dependency>
-      <groupId>com.neovisionaries</groupId>
+      <groupId>uk.co.foundationsedge</groupId>
       <artifactId>nv-i18n</artifactId>
-      <version>1.28</version>
+      <version>1.33</version>
     </dependency>
     <dependency>
       <groupId>com.rollbar</groupId>
